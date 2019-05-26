@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PresenterWsComponent } from './presenter-ws.component';
+import { PresenterComponent } from './presenter.component';
 
-describe('PresenterWsComponent', () => {
-  let component: PresenterWsComponent;
-  let fixture: ComponentFixture<PresenterWsComponent>;
+describe('PresenterComponent', () => {
+  let component: PresenterComponent;
+  let fixture: ComponentFixture<PresenterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PresenterWsComponent ]
+      declarations: [ PresenterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PresenterWsComponent);
+    fixture = TestBed.createComponent(PresenterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

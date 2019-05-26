@@ -1,4 +1,7 @@
 <p>
   <button mat-button (click)="sendBrowserData()">Update</button>
 </p>
-<app-presenter-ws *ngFor="let browser of browserDataArray" [browser]="browser"></app-presenter-ws>
+
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <app-presenter class="example-box" *ngFor="let browser of browserDataArray" [browser]="browser" cdkDrag></app-presenter>
+</div>

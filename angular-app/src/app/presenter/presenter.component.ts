@@ -1,11 +1,11 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-presenter-ws',
-  templateUrl: './presenter-ws.component.html',
-  styleUrls: ['./presenter-ws.component.css'],
+  selector: 'app-presenter',
+  templateUrl: './presenter.component.html',
+  styleUrls: ['./presenter.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PresenterWsComponent {
+export class PresenterComponent {
   @Input() browser: any;
 }

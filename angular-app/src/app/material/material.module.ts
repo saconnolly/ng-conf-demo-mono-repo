@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatMenuModule,
     MatIconModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   exports: [
     MatCardModule,
@@ -24,7 +26,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatMenuModule,
     MatIconModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ]
 })
 export class MaterialModule { }

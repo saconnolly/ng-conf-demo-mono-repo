@@ -3,6 +3,7 @@ import { SocketService } from '../services/sockets';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { SubSink } from 'subsink';
 import { ObjToArray } from '../services/obj-to-array';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-container-ws',
@@ -31,6 +32,10 @@ export class ContainerWsComponent implements OnInit, OnDestroy {
 
   sendBrowserData(): void {
     this._socketService.emitToSocket(this._deviceDetector.browser);
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.browserDataArray, event.previousIndex, event.currentIndex);
   }
 
   ngOnDestroy() {
