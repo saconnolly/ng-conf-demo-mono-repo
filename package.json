@@ -1,0 +1,19 @@
+{
+  "name": "ng-conf-demo-mono-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saconnolly/ng-conf-demo-mono-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saconnolly/ng-conf-demo-mono-repo/issues"
+  },
+  "homepage": "https://github.com/saconnolly/ng-conf-demo-mono-repo#readme"
+}
