@@ -10,7 +10,6 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { ContainerHttpComponent } from './container-http/container-http.component';
 import { PresenterComponent } from './presenter/presenter.component';
 import { ContainerWsComponent } from './container-ws/container-ws.component';
-import { PresenterWsComponent } from './presenter-ws/presenter-ws.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
     ContainerHttpComponent,
     PresenterComponent,
     ContainerWsComponent,
-    PresenterWsComponent,
     MainMenuComponent
   ],
   imports: [
