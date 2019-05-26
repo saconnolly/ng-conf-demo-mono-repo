@@ -15,7 +15,7 @@ export class SocketService extends ObservableStore<any> {
     constructor() { super({ trackStateHistory: true })}
 
     public initSocket(): void {
-        this.socket = socketIo(SERVER_URL);
+        this.socket = socketIo.connect(SERVER_URL);
         this.socket.on('browser-data', (data: any) => {
           this.setState({ browserData: data }, 'NewData');
         });
