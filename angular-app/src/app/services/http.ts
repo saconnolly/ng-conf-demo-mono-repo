@@ -9,7 +9,7 @@ export class HttpService {
     constructor(private _http: HttpClient) {}
 
     public sendBrowserData(browser: string): Observable<any> {
-      return this._http.post('http://express-server-sockets.azurewebsites.net', {
+      return this._http.post('https://express-server-sockets.azurewebsites.net', {
         browser
       });
     }

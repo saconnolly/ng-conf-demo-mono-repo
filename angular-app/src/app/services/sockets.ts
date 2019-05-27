@@ -4,7 +4,7 @@ import { Observable, Observer, of } from 'rxjs';
 import * as socketIo from 'socket.io-client';
 import { ObservableStore } from '../observable-store/observable-store';
 
-const SERVER_URL = 'http://express-server-sockets.azurewebsites.net';
+const SERVER_URL = 'https://express-server-sockets.azurewebsites.net';
 
 @Injectable({
   providedIn: 'root'
