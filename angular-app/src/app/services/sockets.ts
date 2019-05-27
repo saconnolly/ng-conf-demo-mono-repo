@@ -4,7 +4,7 @@ import { Observable, Observer, of } from 'rxjs';
 import * as socketIo from 'socket.io-client';
 import { ObservableStore } from '../observable-store/observable-store';
 
-const SERVER_URL = 'http://localhost:8080';
+const SERVER_URL = 'http://express-server-sockets.azurewebsites.net';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class SocketService extends ObservableStore<any> {
     constructor() { super({ trackStateHistory: true })}
 
     public initSocket(): void {
-        this.socket = socketIo.connect(SERVER_URL);
+        this.socket = socketIo(SERVER_URL);
         this.socket.on('browser-data', (data: any) => {
           this.setState({ browserData: data }, 'NewData');
         });

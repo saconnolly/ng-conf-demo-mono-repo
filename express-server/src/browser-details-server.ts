@@ -12,14 +12,17 @@ export class BrowserDetailsServer {
     private app: express.Application;
     private server: Server;
     private io: SocketIO.Server;
-    private port: string | number;
     private browserData: any;
 
     constructor() {
         this.browserData = new BrowserData();
         this.createApp();
+        this.listenToHttp();
         this.listenToSocket();
-        this.listedToHttp();
+    }
+
+    public getApp(): express.Application {
+        return this.app;
     }
 
     private createApp(): void {
@@ -29,7 +32,7 @@ export class BrowserDetailsServer {
         this.server = createServer(this.app);
     }
 
-    private listedToHttp(): void {
+    private listenToHttp(): void {
         this.app.post('/', (req, res) => {
             this.browserData.updateBrowserData(req.body.browser);
             this.emitNewBrowserData();
@@ -42,6 +45,10 @@ export class BrowserDetailsServer {
         this.io = socketIo(this.server);
         this.server.listen(this.SOCKET_PORT, () => {
             console.log(`Running socket server on port ${this.SOCKET_PORT}`,);
+        });
+
+        this.io.on('connection', (socket: any) => {
+            console.log(`Connected client on port ${this.SOCKET_PORT} HORRAY`);
         });
 
         this.io.on('connect', (socket: any) => {
@@ -61,9 +68,5 @@ export class BrowserDetailsServer {
 
     private emitNewBrowserData() {
         this.io.emit('browser-data', this.browserData.getBrowserData());
-    }
-
-    public getApp(): express.Application {
-        return this.app;
     }
 }

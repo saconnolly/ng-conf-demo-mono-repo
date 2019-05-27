@@ -4,6 +4,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { SubSink } from 'subsink';
 import { ObjToArray } from '../services/obj-to-array';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Subscription, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-container-ws',
@@ -15,12 +17,14 @@ export class ContainerWsComponent implements OnInit, OnDestroy {
   browserDataArray: Array<object> = [];
   ioConnection: any;
   subsink = new SubSink();
+  connected: Subscription;
+  isConnected = false;
 
   constructor(
     private _socketService: SocketService,
     private _deviceDetector: DeviceDetectorService,
     private _objToArray: ObjToArray
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subsink.sink = this._socketService.stateChanged.subscribe(state => {
