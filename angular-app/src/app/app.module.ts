@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { ContainerHttpComponent } from './container-http/container-http.componen
 import { PresenterComponent } from './presenter/presenter.component';
 import { ContainerWsComponent } from './container-ws/container-ws.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { PresentationDetailsDialogComponent } from './presentation-details-dialog/presentation-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,18 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
     ContainerHttpComponent,
     PresenterComponent,
     ContainerWsComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    PresentationDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     DeviceDetectorModule.forRoot()
   ],
+  entryComponents: [PresentationDetailsDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

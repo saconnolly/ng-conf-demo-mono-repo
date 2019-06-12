@@ -1,0 +1,39 @@
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form>
+      <ng-template matStepLabel>Container/Presenter Pattern in angular</ng-template>
+      <ul>
+        <li>Pass state from container -> presenter using @Input properties</li>
+        <li>Communicate from presenter -> container using @Output properties</li>
+        <li>Set change detection strategy to OnPush in presentation components</li>
+        <li>Presentation component's UI won't change and ngOnChanges() won't fire unless input property reference changes (or an event fires)</li>
+      </ul>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form>
+      <ng-template matStepLabel>Angular Material/CDK</ng-template>
+      <ul>
+        <li>Stepper</li>
+        <li>Drag/Drop</li>
+      </ul>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form>
+      <ng-template matStepLabel>Basics of RxJs Subjects</ng-template>
+      <ul>
+        <li>Show in socket.service</li>
+      </ul>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+    <form>
+      <ng-template matStepLabel>Observable Store</ng-template>
+      <ul>
+        <li>Simple alternative to NgRx</li>
+        <li>https://github.com/DanWahlin/Observable-Store</li>
+      </ul>
+    </form>
+  </mat-step>
+</mat-vertical-stepper>

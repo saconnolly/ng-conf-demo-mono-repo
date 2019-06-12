@@ -47,10 +47,6 @@ export class BrowserDetailsServer {
             console.log(`Running socket server on port ${this.SOCKET_PORT}`,);
         });
 
-        this.io.on('connection', (socket: any) => {
-            console.log(`Connected client on port ${this.SOCKET_PORT} HORRAY`);
-        });
-
         this.io.on('connect', (socket: any) => {
             console.log(`Connected client on port ${this.SOCKET_PORT}`);
 
@@ -60,6 +56,11 @@ export class BrowserDetailsServer {
                 this.emitNewBrowserData();
             });
 
+            socket.on('new-browser-order', (m: any) => {
+                console.log('[server](message): %s', JSON.stringify(m));
+                this.emitNewBrowserOrder(m);
+            });
+
             socket.on('disconnect', () => {
                 console.log('Client disconnected');
             });
@@ -67,6 +68,12 @@ export class BrowserDetailsServer {
     }
 
     private emitNewBrowserData() {
+        console.log('emit new browser data');
         this.io.emit('browser-data', this.browserData.getBrowserData());
+    }
+
+    private emitNewBrowserOrder(m: any) {
+        console.log('emit new browser order');
+        this.io.emit('browser-order', m);
     }
 }

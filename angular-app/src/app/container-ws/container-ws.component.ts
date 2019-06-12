@@ -19,6 +19,7 @@ export class ContainerWsComponent implements OnInit, OnDestroy {
   subsink = new SubSink();
   connected: Subscription;
   isConnected = false;
+  checker: number;
 
   constructor(
     private _socketService: SocketService,
@@ -32,13 +33,25 @@ export class ContainerWsComponent implements OnInit, OnDestroy {
         this.browserDataArray = this._objToArray.transform(state.browserData);
       }
     });
+    this.subsink.sink = this._socketService.browserOrder$.subscribe((bo: any) => {
+      if (this.checker !== bo.key) {
+        moveItemInArray(this.browserDataArray, bo.previousIndex, bo.currentIndex);
+      }
+    });
   }
 
   sendBrowserData(): void {
-    this._socketService.emitToSocket(this._deviceDetector.browser);
+    this._socketService.emitNewBrowserDataToSocket(this._deviceDetector.browser);
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    this.checker = Math.random();
+    this._socketService.emitNewBrowserOrderToSocket({
+      browserDataArray: this.browserDataArray,
+      previousIndex: event.previousIndex,
+      currentIndex: event.currentIndex,
+      key: this.checker
+    });
     moveItemInArray(this.browserDataArray, event.previousIndex, event.currentIndex);
   }
 
